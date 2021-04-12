@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tabs</title>
+    <style>
+
+        /* =================
+            General 
+        ================= */
+        *{margin:0px;padding:0;}
+        div {
+            width:80%;
+            margin: 0 auto;
+        }
+        h1 {
+            text-align:center;
+        }
+
+        /* =======================
+            typography and layout
+        ============================ */
+        .tabs {
+            border:1px solid black;
+            overflow:hidden;  
+            background-color: rgb(239,239,239)
+            /* background-color:whitesmoke; */
+    
+        }
+        .tabs button {
+            border:none;
+            cursor:pointer;
+            float:left;
+            font-size:16px;
+            padding: 1em;
+            background-color:inherit;
+        }
+        .tabs button:hover  {
+            background-color:silver;
+        }
+        .tabs button:focus {
+            background-color:silver;
+        }
+        .tabs button.active {
+            background-color:gray;
+        }
+        .tabs-content {
+            border:1px solid black;
+            border-top:none;
+        }
+        h4 , p {
+            padding-top: 1em;
+        }
+
+        /* ==========================
+            INDIVIDUAL CSS
+        ============================ */
+        button.tabs-btn-london {
+            
+        }
+        #london {
+            display:block;
+        }
+        #paris {
+            display:none;
+        }
+        #tokyo {
+            display:none;
+        }
+
+    </style>
+</head>
+<body>
+    <h1>Tabs</h1>
+    <div class="tabs">
+        <button class="tabs-btn-london btn" autofocus onclick="myfunction(event,'london')">London</button>
+        <button class="tabs-btn-paris btn" onclick="myfunction(event,'paris')">Paris</button>
+        <button class="tabs-btn-tokyo btn" onclick="myfunction(event,'tokyo')">Tokyo</button>
+    </div>
+    
+    <div class="tabs-content" id="london">
+        <h4 >London</h4>
+        <p >London is the capital city of England</p>  
+    </div>
+    <div class="tabs-content"  id="paris">
+        <h4 >Paris</h4>
+        <p >Paris is the capital city of France</p>    
+    </div>
+    <div class="tabs-content" id="tokyo">
+        <h4 >Tokyo</h4>
+        <p >Tokyo is the capital city of Japan</p>
+    </div>
+        
+    
+    <script>
+        function myfunction(evt,city){
+            var allcity = document.getElementsByClassName("tabs-content");
+            var i;
+            for (i=0;i<allcity.length;i++){
+                allcity[i].style.display = "none"
+            };
+            var btn = document.getElementsByClassName('btn');
+            var k;
+            for (k=0;k<btn.length;k++){
+                btn[k].className = btn[k].className.replace(' active',' ');
+                
+            };
+            var content = document.getElementById(city);
+            content.style.display = "block"
+            evt.currentTarget.className += (' active');
+        }
+    </script>
+
+</body>
+</html>
