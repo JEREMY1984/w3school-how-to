@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Accordion</title>
+    <style>
+        body{
+            margin:0;
+            padding:0;
+        }
+        .accordion-btn {
+            width:100%;
+            font-size:1.5em;
+            text-align:left;
+            border:none;
+            padding:3px;
+            outline:none;
+        }
+        .accordion-btn:hover,
+        .active
+        {
+            background:silver;
+        }
+        .accordion-btn:focus{
+            background:gray;
+        }
+        .accordion-btn::after {
+            content:"\002B";
+            float:right;
+        }
+        .active::after{
+            content:"\002D";
+        }
+        .panel {
+            line-height:1.3;        
+            max-height: 0;
+            overflow:hidden;
+            padding: 0 16px;
+            transition:all 0.5s ease;
+        }
+        button.active+div.panel {
+            padding:16px;
+        }
+
+    </style>
+</head>
+<body>
+    <h1>Accordion</h1>
+    <button class="accordion-btn">Section 1</button>
+    <div class="panel">
+        <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Delectus id doloribus eaque dolorem, doloremque odit impedit quaerat nam eius velit, unde eveniet temporibus sit sunt saepe, culpa quia repellat non nihil! Fuga eveniet pariatur ea dolor in explicabo sit ab ducimus? Eius reprehenderit praesentium sequi autem impedit reiciendis id exercitationem!</p>
+    </div>
+    <button class="accordion-btn">Section 2</button>
+    <div class="panel">
+        <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Delectus id doloribus eaque dolorem, doloremque odit impedit quaerat nam eius velit, unde eveniet temporibus sit sunt saepe, culpa quia repellat non nihil! Fuga eveniet pariatur ea dolor in explicabo sit ab ducimus? Eius reprehenderit praesentium sequi autem impedit reiciendis id exercitationem!</p>
+    </div>
+    <button class="accordion-btn">Section 3</button>
+    <div class="panel">
+        <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Delectus id doloribus eaque dolorem, doloremque odit impedit quaerat nam eius velit, unde eveniet temporibus sit sunt saepe, culpa quia repellat non nihil! Fuga eveniet pariatur ea dolor in explicabo sit ab ducimus? Eius reprehenderit praesentium sequi autem impedit reiciendis id exercitationem!</p>
+    </div>
+    <script>
+        var btn = document.getElementsByClassName('accordion-btn');
+        var btns = [...btn];
+        btns.forEach(function(item,index){
+            item.addEventListener("click",function(){
+                item.classList.toggle('active');
+                if(item.nextElementSibling.style.maxHeight){
+                    item.nextElementSibling.style.maxHeight = null;
+                } else {
+                    item.nextElementSibling.style.maxHeight = item.nextElementSibling.scrollHeight + "px";
+                }
+            })
+        })
+    </script>
+</body>
+</html>
